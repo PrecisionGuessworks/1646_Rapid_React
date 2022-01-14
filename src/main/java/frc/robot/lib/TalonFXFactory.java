@@ -16,7 +16,7 @@ public class TalonFXFactory {
       return talon;
    }
 
-   public static TalonFX makeTalonFX(int id, boolean invert, double kP, double kI, double kD, double kF){
+   public static TalonFX makeTalonFX(int id, boolean invert, PIDConfig pidconfig){
       TalonFX talon = makeTalonFX(id);
       talon.setInverted(invert);
       if(talon.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 30) != null){
@@ -24,10 +24,10 @@ public class TalonFXFactory {
      }
      talon.setSensorPhase(false);
 
-      talon.config_kP(0, kP, 30);
-      talon.config_kI(0, kI, 30);
-      talon.config_kD(0, kD, 30);
-      talon.config_kF(0, kF, 30);
+      talon.config_kP(0, pidconfig.kP, 30);
+      talon.config_kI(0, pidconfig.kI, 30);
+      talon.config_kD(0, pidconfig.kD, 30);
+      talon.config_kF(0, pidconfig.kF, 30);
       return talon;
    }
 
