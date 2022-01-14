@@ -1,4 +1,4 @@
-package frc.robot;
+package frc.robot.lib;
 
 import edu.wpi.first.wpilibj.Joystick;
 
