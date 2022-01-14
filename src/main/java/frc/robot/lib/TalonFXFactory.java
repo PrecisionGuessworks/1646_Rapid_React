@@ -8,18 +8,20 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 public class TalonFXFactory {
    public static TalonFX makeTalonFX(int id){
-      return new TalonFX(id);
-   }
-
-   public static TalonFX makeTalonFX(int id, boolean invert){
-      TalonFX talon = makeTalonFX(id);
-      talon.setInverted(invert);
+      TalonFX talon = new TalonFX(id);
+      talon.configFactoryDefault();
       return talon;
    }
 
-   public static TalonFX makeTalonFX(int id, boolean invert, PIDConfig pidconfig){
+   public static TalonFX makeTalonFX(int id, TalonFXInvertType direction){
       TalonFX talon = makeTalonFX(id);
-      talon.setInverted(invert);
+      talon.setInverted(direction);
+      return talon;
+   }
+
+   public static TalonFX makeTalonFX(int id, TalonFXInvertType direction, PIDConfig pidconfig){
+      TalonFX talon = makeTalonFX(id);
+      talon.setInverted(direction);
       if(talon.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 30) != null){
          System.out.println("ConfigSelectedFeedbackSensor failed");
      }
