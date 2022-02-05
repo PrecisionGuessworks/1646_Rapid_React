@@ -10,6 +10,8 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 import frc.robot.subsystems.Drivetrain.states.OpenLoopState;
+import frc.robot.subsystems.Intake.IntakeSubsystem;
+import frc.robot.subsystems.Intake.states.IdleIntakeState;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Subsystem;
@@ -27,6 +29,7 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   DrivetrainSubsystem drive;
+  IntakeSubsystem intake;
 
 
   public RobotContainer() {
@@ -37,10 +40,12 @@ public class RobotContainer {
 
   public void initilizeSubsystems(){
     drive = DrivetrainSubsystem.getInstance();
+    intake = IntakeSubsystem.getInstance();
   }
 
   public void setAllDefaultCommands(){
     setDefaultCommand(drive, new OpenLoopState());
+    setDefaultCommand(intake, new IdleIntakeState());
   }
 
   public void setDefaultCommand(Subsystem subsystem, Command defaultCommand){
