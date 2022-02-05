@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 
 public class IntakeSubsystem extends SubsystemBase {
 
-  private IntakeSubsystem instance;
+  private static IntakeSubsystem instance;
 
   private VictorSPX leftIntakeMotor, rightIntakeMotor;
 
@@ -24,7 +24,7 @@ public class IntakeSubsystem extends SubsystemBase {
     rightIntakeMotor.setInverted(InvertType.InvertMotorOutput);
   }
 
-  public IntakeSubsystem getInstance(){
+  public static IntakeSubsystem getInstance(){
     if (instance == null){
       instance = new IntakeSubsystem();
     }
