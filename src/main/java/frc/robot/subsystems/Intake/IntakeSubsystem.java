@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 
 public class IntakeSubsystem extends SubsystemBase {
 
@@ -17,8 +18,8 @@ public class IntakeSubsystem extends SubsystemBase {
   private VictorSPX leftIntakeMotor, rightIntakeMotor;
 
   private IntakeSubsystem() {
-    leftIntakeMotor = new VictorSPX(10);
-    rightIntakeMotor = new VictorSPX(11);
+    leftIntakeMotor = new VictorSPX(RobotMap.LEFT_INTAKE_MOTOR_ID);
+    rightIntakeMotor = new VictorSPX(RobotMap.RIGHT_INTAKE_MOTOR_ID);
 
     rightIntakeMotor.setInverted(InvertType.InvertMotorOutput);
   }
