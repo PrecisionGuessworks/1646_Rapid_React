@@ -18,8 +18,8 @@ public class OpenLoopState extends CommandBase {
 
   @Override
   public void execute() {
-    double throttle = Controllers.getDriverController().getRawAxis(Controllers.PS4_Controller.Axis.LEFT_STICK_Y);
-    double rotation = Controllers.getDriverController().getRawAxis(Controllers.PS4_Controller.Axis.RIGHT_STICK_X);
+    double throttle = Math.pow(Controllers.getDriverController().getRawAxis(Controllers.PS4_Controller.Axis.LEFT_STICK_Y), 3);
+    double rotation = 0.25*Math.pow(Controllers.getDriverController().getRawAxis(Controllers.PS4_Controller.Axis.RIGHT_STICK_X), 3);
     drive.curvatureDrive(throttle, rotation);
   }
 }
