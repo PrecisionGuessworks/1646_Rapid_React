@@ -52,7 +52,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
       quickTurn = false;
     }
     //Note: Even though the variable is called wheel speed, this is actually for wheel powers
-    WheelSpeeds wheelSpeed = DifferentialDrive.curvatureDriveIK(throttle, rotation, quickTurn);
+    WheelSpeeds wheelSpeed = DifferentialDrive.curvatureDriveIK(throttle, -1 * rotation, quickTurn);
     setPower(wheelSpeed.left, wheelSpeed.right);
   }
 
