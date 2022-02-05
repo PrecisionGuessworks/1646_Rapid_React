@@ -8,16 +8,16 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
 
-public class IntakeState extends CommandBase {
+public class SpitOutState extends CommandBase {
   
   private IntakeSubsystem intake = IntakeSubsystem.getInstance();
 
-  public IntakeState() {
+  public SpitOutState() {
     addRequirements(intake);
   }
 
   @Override
   public void initialize() {
-    intake.setPower(IntakeConstants.PULL_IN_POWER);
+    intake.setPower(IntakeConstants.SPIT_OUT_POWER);
   }
 }
