@@ -1,4 +1,4 @@
-package frc.robot;
+package frc.robot.constants;
 
 public class RobotMap {
     public static final int FRONT_LEFT_MOTOR_ID = 00;
