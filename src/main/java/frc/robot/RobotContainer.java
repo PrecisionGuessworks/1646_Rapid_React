@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Arm.ArmSubsystem;
+import frc.robot.subsystems.Arm.states.manualArmState;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 import frc.robot.subsystems.Drivetrain.states.OpenLoopState;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
@@ -30,6 +32,7 @@ public class RobotContainer {
 
   DrivetrainSubsystem drive;
   IntakeSubsystem intake;
+  ArmSubsystem arm;
 
 
   public RobotContainer() {
@@ -41,11 +44,13 @@ public class RobotContainer {
   public void initilizeSubsystems(){
     drive = DrivetrainSubsystem.getInstance();
     intake = IntakeSubsystem.getInstance();
+    arm = ArmSubsystem.getInstance();
   }
 
   public void setAllDefaultCommands(){
     setDefaultCommand(drive, new OpenLoopState());
     setDefaultCommand(intake, new IdleIntakeState());
+    setDefaultCommand(arm, new manualArmState());
   }
 
   public void setDefaultCommand(Subsystem subsystem, Command defaultCommand){
