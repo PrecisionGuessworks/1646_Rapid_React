@@ -5,6 +5,7 @@
 package frc.robot.subsystems.Arm;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 
@@ -18,6 +19,8 @@ public class ArmSubsystem extends SubsystemBase {
 
   private ArmSubsystem() {
     armMotor = TalonFXFactory.makeTalonFX(20); 
+
+    armMotor.setInverted(TalonFXInvertType.CounterClockwise);
   }
 
   public static ArmSubsystem getInstance(){
