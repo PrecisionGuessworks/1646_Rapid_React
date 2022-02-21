@@ -10,6 +10,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.constants.RobotMap;
 import frc.robot.lib.TalonFXFactory;
 
 public class ArmSubsystem extends SubsystemBase {
@@ -18,7 +19,7 @@ public class ArmSubsystem extends SubsystemBase {
   private TalonFX armMotor;
 
   private ArmSubsystem() {
-    armMotor = TalonFXFactory.makeTalonFX(20); 
+    armMotor = TalonFXFactory.makeTalonFX(RobotMap.ARM_MOTOR_ID); 
 
     armMotor.setInverted(TalonFXInvertType.CounterClockwise);
   }

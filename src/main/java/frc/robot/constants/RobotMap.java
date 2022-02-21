@@ -9,4 +9,6 @@ public class RobotMap {
     public static final int BACK_RIGHT_MOTOR_ID = 05;
 
     public static final int INTAKE_MOTOR_ID = 10;
+
+    public static final int ARM_MOTOR_ID = 20;
 }
