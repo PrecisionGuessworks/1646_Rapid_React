@@ -15,13 +15,11 @@ public class IntakeSubsystem extends SubsystemBase {
 
   private static IntakeSubsystem instance;
 
-  private VictorSPX leftIntakeMotor, rightIntakeMotor;
+  private VictorSPX intakeMotor;
 
   private IntakeSubsystem() {
-    leftIntakeMotor = new VictorSPX(RobotMap.LEFT_INTAKE_MOTOR_ID);
-    rightIntakeMotor = new VictorSPX(RobotMap.RIGHT_INTAKE_MOTOR_ID);
-
-    rightIntakeMotor.setInverted(InvertType.InvertMotorOutput);
+    intakeMotor = new VictorSPX(RobotMap.INTAKE_MOTOR_ID);
+    
   }
 
   public static IntakeSubsystem getInstance(){
@@ -32,8 +30,8 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   public void setPower(double power){
-    leftIntakeMotor.set(ControlMode.PercentOutput, power);
-    rightIntakeMotor.set(ControlMode.PercentOutput, power);
+    intakeMotor.set(ControlMode.PercentOutput, power);
+
   }
 
   @Override
