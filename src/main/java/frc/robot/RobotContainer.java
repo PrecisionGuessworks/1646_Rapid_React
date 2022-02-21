@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Arm.ArmSubsystem;
+import frc.robot.subsystems.Arm.states.IdleArmState;
 import frc.robot.subsystems.Arm.states.manualArmState;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 import frc.robot.subsystems.Drivetrain.states.OpenLoopState;
@@ -50,7 +51,7 @@ public class RobotContainer {
   public void setAllDefaultCommands(){
     setDefaultCommand(drive, new OpenLoopState());
     setDefaultCommand(intake, new IdleIntakeState());
-    setDefaultCommand(arm, new manualArmState());
+    setDefaultCommand(arm, new IdleArmState());
   }
 
   public void setDefaultCommand(Subsystem subsystem, Command defaultCommand){
