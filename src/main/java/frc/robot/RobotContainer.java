@@ -5,18 +5,25 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.PS4Controller.Button;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.lib.Controllers;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Arm.ArmSubsystem;
+import frc.robot.subsystems.Arm.states.IdleArmState;
 import frc.robot.subsystems.Arm.states.manualArmState;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 import frc.robot.subsystems.Drivetrain.states.OpenLoopState;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
 import frc.robot.subsystems.Intake.states.IdleIntakeState;
+import frc.robot.subsystems.Intake.states.PullInState;
+import frc.robot.subsystems.Intake.states.SpitOutState;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -63,7 +70,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    Joystick op_joystick = Controllers.getOperatorController();
+
+    new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.X).whileHeld(new PullInState());
+    new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whileHeld(new SpitOutState());
+  }
 
  
   public Command getAutonomousCommand() {
