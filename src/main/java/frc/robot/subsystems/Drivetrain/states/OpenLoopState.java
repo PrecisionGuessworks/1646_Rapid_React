@@ -10,9 +10,10 @@ import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 
 public class OpenLoopState extends CommandBase {
 
-  DrivetrainSubsystem drive = DrivetrainSubsystem.getInstance();
+  DrivetrainSubsystem drive;
 
-  public OpenLoopState() {
+  public OpenLoopState(DrivetrainSubsystem drive) {
+    this.drive = drive;
     addRequirements(drive);
   }
 
