@@ -37,9 +37,9 @@ public class RobotContainer {
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
-  DrivetrainSubsystem drive;
-  IntakeSubsystem intake;
-  ArmSubsystem arm;
+  private DrivetrainSubsystem drive;
+  private IntakeSubsystem intake;
+  private ArmSubsystem arm;
 
 
   public RobotContainer() {
