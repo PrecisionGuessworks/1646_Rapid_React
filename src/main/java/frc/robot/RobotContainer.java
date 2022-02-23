@@ -57,7 +57,7 @@ public class RobotContainer {
   public void setAllDefaultCommands(){
     setDefaultCommand(drive, new OpenLoopState(drive));
     setDefaultCommand(intake, new IdleState(intake));
-    setDefaultCommand(arm, new manualArmState());
+    setDefaultCommand(arm, new manualArmState(arm));
   }
 
   public void setDefaultCommand(Subsystem subsystem, Command defaultCommand){

@@ -11,7 +11,8 @@ public class IdleArmState extends CommandBase {
   
   ArmSubsystem arm = ArmSubsystem.getInstance();
 
-  public IdleArmState() {
+  public IdleArmState(ArmSubsystem arm) {
+    this.arm = arm;
     addRequirements(arm);
   }
 

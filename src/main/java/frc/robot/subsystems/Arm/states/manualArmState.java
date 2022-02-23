@@ -10,9 +10,10 @@ import frc.robot.lib.Controllers;
 
 public class manualArmState extends CommandBase {
   
-  public ArmSubsystem arm = ArmSubsystem.getInstance();
+  public ArmSubsystem arm;
 
-  public manualArmState() {
+  public manualArmState(ArmSubsystem arm) {
+    this.arm = arm;
     addRequirements(arm);
   }
 
