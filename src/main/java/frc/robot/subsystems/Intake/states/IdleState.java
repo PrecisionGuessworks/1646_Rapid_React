@@ -7,11 +7,12 @@ package frc.robot.subsystems.Intake.states;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
 
-public class IdleIntakeState extends CommandBase {
+public class IdleState extends CommandBase {
 
-  private IntakeSubsystem intake = IntakeSubsystem.getInstance();
+  private IntakeSubsystem intake;
 
-  public IdleIntakeState() {
+  public IdleState(IntakeSubsystem intake) {
+    this.intake = intake;
     addRequirements(intake);
   }
 

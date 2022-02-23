@@ -17,7 +17,7 @@ import frc.robot.subsystems.Arm.states.manualArmState;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 import frc.robot.subsystems.Drivetrain.states.OpenLoopState;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
-import frc.robot.subsystems.Intake.states.IdleIntakeState;
+import frc.robot.subsystems.Intake.states.IdleState;
 import frc.robot.subsystems.Intake.states.PullInState;
 import frc.robot.subsystems.Intake.states.SpitOutState;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -56,7 +56,7 @@ public class RobotContainer {
 
   public void setAllDefaultCommands(){
     setDefaultCommand(drive, new OpenLoopState());
-    setDefaultCommand(intake, new IdleIntakeState());
+    setDefaultCommand(intake, new IdleState(intake));
     setDefaultCommand(arm, new manualArmState());
   }
 
@@ -73,8 +73,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
     Joystick op_joystick = Controllers.getOperatorController();
 
-    new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.X).whileHeld(new PullInState());
-    new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whileHeld(new SpitOutState());
+    new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.X).whileHeld(new PullInState(intake));
+    new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whileHeld(new SpitOutState(intake));
   }
 
  

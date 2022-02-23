@@ -10,9 +10,10 @@ import frc.robot.subsystems.Intake.IntakeSubsystem;
 
 public class SpitOutState extends CommandBase {
   
-  private IntakeSubsystem intake = IntakeSubsystem.getInstance();
+  private IntakeSubsystem intake;
 
-  public SpitOutState() {
+  public SpitOutState(IntakeSubsystem intake) {
+    this.intake = intake;
     addRequirements(intake);
   }
 

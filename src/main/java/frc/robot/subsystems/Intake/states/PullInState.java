@@ -10,9 +10,10 @@ import frc.robot.subsystems.Intake.IntakeSubsystem;
 
 public class PullInState extends CommandBase {
   
-  private IntakeSubsystem intake = IntakeSubsystem.getInstance();
+  private IntakeSubsystem intake;
 
-  public PullInState() {
+  public PullInState(IntakeSubsystem intake) {
+    this.intake = intake;
     addRequirements(intake);
   }
 
