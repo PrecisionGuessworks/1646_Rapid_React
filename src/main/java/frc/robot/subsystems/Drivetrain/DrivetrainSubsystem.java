@@ -27,11 +27,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
   private DrivetrainSubsystem() {
     frontLeftMotor = TalonFXFactory.makeTalonFX(RobotMap.FRONT_LEFT_MOTOR_ID, TalonFXInvertType.CounterClockwise, new PIDConfig(0.0, 0.0, 0.0, 0.0));
     topLeftMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.TOP_LEFT_MOTOR_ID, frontLeftMotor);
-    backLeftMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.BACK_LEFT_MOTOR_ID, backLeftMotor);
+    backLeftMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.BACK_LEFT_MOTOR_ID, frontLeftMotor);
 
     frontRightMotor = TalonFXFactory.makeTalonFX(RobotMap.FRONT_RIGHT_MOTOR_ID, TalonFXInvertType.Clockwise, new PIDConfig(0.0, 0.0, 0.0, 0.0));
     topRightMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.TOP_RIGHT_MOTOR_ID, frontRightMotor);
-    backRightMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.BACK_RIGHT_MOTOR_ID, backRightMotor);
+    backRightMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.BACK_RIGHT_MOTOR_ID, frontRightMotor);
   }
 
   public static synchronized DrivetrainSubsystem getInstance(){
