@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.constants.Constants.ArmConstants.ArmPosition;
 import frc.robot.lib.Controllers;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Arm.ArmSubsystem;
 import frc.robot.subsystems.Arm.states.IdleArmState;
+import frc.robot.subsystems.Arm.states.PositionArmState;
 import frc.robot.subsystems.Arm.states.manualArmState;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 import frc.robot.subsystems.Drivetrain.states.OpenLoopState;
@@ -77,6 +79,8 @@ public class RobotContainer {
 
     new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.Left_Button_1).whileHeld(new PullInState());
     new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.Right_Button_1).whileHeld(new SpitOutState());
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.X).whenPressed(new PositionArmState(ArmPosition.LOW));
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whenPressed(new PositionArmState(ArmPosition.HIGH));
     new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.X).whileHeld(new PullInState());
     new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whileHeld(new SpitOutState());
   }

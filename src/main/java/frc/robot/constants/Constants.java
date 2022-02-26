@@ -18,8 +18,14 @@ public final class Constants {
         public static final double SPIT_OUT_POWER = -0.9;
     }
 
-    public final class ArmConstants {
+    public static final class ArmConstants {
         public static final double UPPER_LIMIT = 45000.0;//-7846.0;
         public static final double LOWER_LIMIT = 1000.0;//-53587.0;
+
+        public static enum ArmPosition{
+            LOW, HIGH
+        }
+
+
     }
 }
