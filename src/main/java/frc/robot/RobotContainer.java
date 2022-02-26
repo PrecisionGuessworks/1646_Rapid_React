@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.Scoreball;
 import frc.robot.commands.autonomous.ScoreAndDriveBackwards;
 import frc.robot.constants.Constants.ArmConstants.ArmPosition;
 import frc.robot.lib.Controllers;
@@ -81,6 +82,7 @@ public class RobotContainer {
     new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whenPressed(new PositionArmState(ArmPosition.HIGH));
     new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.X).whileHeld(new PullInState());
     new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whileHeld(new SpitOutState());
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.L_Joy_Button).whenPressed(new Scoreball());
   }
 
  
