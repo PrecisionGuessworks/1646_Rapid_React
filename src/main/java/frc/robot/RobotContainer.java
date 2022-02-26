@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.autonomous.ScoreAndDriveBackwards;
 import frc.robot.constants.Constants.ArmConstants.ArmPosition;
 import frc.robot.lib.Controllers;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -35,9 +36,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
 
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   DrivetrainSubsystem drive;
   IntakeSubsystem intake;
@@ -88,6 +86,6 @@ public class RobotContainer {
  
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return new ScoreAndDriveBackwards();
   }
 }
