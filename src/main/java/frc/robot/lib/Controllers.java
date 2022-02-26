@@ -39,8 +39,8 @@ public class Controllers {
             public static final int X = 1;
             public static final int CIRCLE = 2;
             public static final int TRIANGLE = 4;
-            public static final int L1 = 5;
-            public static final int R1 = 6;
+            public static final int Left_Button_1 = 5;
+            public static final int Right_Button_1 = 6;
             public static final int SHARE = 7;
             public static final int OPTIONS = 8;
             public static final int L_Joy_Button = 9;
