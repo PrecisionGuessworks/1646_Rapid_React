@@ -56,6 +56,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
     setPower(wheelSpeed.left, wheelSpeed.right);
   }
 
+  public void setSpeed(double leftSpeed, double rightSpeed){
+    frontLeftMotor.set(TalonFXControlMode.Velocity, leftSpeed);
+    frontRightMotor.set(TalonFXControlMode.Velocity, rightSpeed);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
