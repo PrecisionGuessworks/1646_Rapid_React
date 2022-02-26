@@ -71,8 +71,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    Joystick drive_joystick = Controllers.getDriverController();
     Joystick op_joystick = Controllers.getOperatorController();
 
+
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.Left_Button_1).whileHeld(new PullInState());
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.Right_Button_1).whileHeld(new SpitOutState());
     new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.X).whileHeld(new PullInState());
     new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whileHeld(new SpitOutState());
   }
