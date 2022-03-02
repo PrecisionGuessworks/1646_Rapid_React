@@ -16,6 +16,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.Constants;
 import frc.robot.constants.RobotMap;
+import frc.robot.constants.Constants.ArmConstants;
 import frc.robot.lib.TalonFXFactory;
 
 public class ArmSubsystem extends SubsystemBase {
@@ -43,7 +44,8 @@ public class ArmSubsystem extends SubsystemBase {
     if (power > 0.0 && getPosition() > Constants.ArmConstants.UPPER_LIMIT){
       armMotor.set(ControlMode.PercentOutput, 0.0);
     }else if(power < 0.0 && getPosition() < Constants.ArmConstants.LOWER_LIMIT){
-      armMotor.set(ControlMode.PercentOutput, 0.0);
+      // Not set to zero as the arm is slightly bouncing when we drive
+      armMotor.set(ControlMode.PercentOutput, ArmConstants.HOLD_DOWN_POWER);
     }else{
       armMotor.set(ControlMode.PercentOutput, power);
     }

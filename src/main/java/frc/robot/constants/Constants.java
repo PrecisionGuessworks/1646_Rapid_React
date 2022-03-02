@@ -27,6 +27,8 @@ public final class Constants {
         public static final double UPPER_LIMIT = 45000.0;//-7846.0;
         public static final double LOWER_LIMIT = 1000.0;//-53587.0;
 
+        public static final double HOLD_DOWN_POWER = 0.13;
+
         public static enum ArmPosition{
             LOW, HIGH
         }
