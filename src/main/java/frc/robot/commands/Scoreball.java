@@ -14,9 +14,9 @@ public class Scoreball extends SequentialCommandGroup {
 
   public Scoreball() {
     addCommands(
-      new PositionArmState(ArmPosition.HIGH).withTimeout(2), 
-      new SpitOutState().withTimeout(1),
-      new PositionArmState(ArmPosition.LOW).withTimeout(2)
+      new PositionArmState(ArmPosition.HIGH).withTimeout(1), 
+      new SpitOutState().withTimeout(0.5),
+      new PositionArmState(ArmPosition.LOW).withTimeout(1)
     );
   }
 }
