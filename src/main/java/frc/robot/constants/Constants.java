@@ -13,6 +13,11 @@ package frc.robot.constants;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    public static final class DriveConstants{
+        public static final double THROTTLE_SCALER = 1.0;
+        public static final double ROTATION_SCALE = 1.0;
+    }
+
     public final class IntakeConstants {
         public static final double PULL_IN_POWER = 0.9;
         public static final double SPIT_OUT_POWER = -0.9;

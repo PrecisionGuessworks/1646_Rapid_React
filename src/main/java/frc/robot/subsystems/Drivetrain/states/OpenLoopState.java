@@ -5,6 +5,7 @@
 package frc.robot.subsystems.Drivetrain.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.constants.Constants.DriveConstants;
 import frc.robot.lib.Controllers;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 
@@ -20,6 +21,6 @@ public class OpenLoopState extends CommandBase {
   public void execute() {
     double throttle = Controllers.getDriverController().getRawAxis(Controllers.PS4_Controller.Axis.LEFT_STICK_Y);
     double rotation = -1.0 * Controllers.getDriverController().getRawAxis(Controllers.PS4_Controller.Axis.RIGHT_STICK_X);
-    drive.curvatureDrive(throttle, rotation);
+    drive.curvatureDrive(throttle * DriveConstants.THROTTLE_SCALER, rotation * DriveConstants.ROTATION_SCALE);
   }
 }
