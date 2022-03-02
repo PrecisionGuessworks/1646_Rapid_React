@@ -6,8 +6,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
+import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import frc.robot.commands.Scoreball;
 import frc.robot.commands.autonomous.ScoreAndDriveBackwards;
 import frc.robot.constants.Constants.ArmConstants.ArmPosition;
@@ -39,10 +41,12 @@ public class RobotContainer {
   DrivetrainSubsystem drive;
   IntakeSubsystem intake;
   ArmSubsystem arm;
+  PowerDistribution powerDistrubutionBoard;
 
 
   public RobotContainer() {
     initilizeSubsystems();
+    initilizePowerDistrubutionBoard();
     setAllDefaultCommands();
     configureButtonBindings();
   }
@@ -51,6 +55,11 @@ public class RobotContainer {
     drive = DrivetrainSubsystem.getInstance();
     intake = IntakeSubsystem.getInstance();
     arm = ArmSubsystem.getInstance();
+  }
+
+  public void initilizePowerDistrubutionBoard(){
+    powerDistrubutionBoard = new PowerDistribution(1, ModuleType.kRev);
+    powerDistrubutionBoard.clearStickyFaults();
   }
 
   public void setAllDefaultCommands(){
