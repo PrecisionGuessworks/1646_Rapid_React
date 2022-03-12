@@ -14,8 +14,8 @@ package frc.robot.constants;
  */
 public final class Constants {
     public static final class DriveConstants{
-        public static final double THROTTLE_SCALER = 1.0;
-        public static final double ROTATION_SCALE = 1.0;
+        public static final double THROTTLE_SCALER = 0.6;
+        public static final double ROTATION_SCALE = 0.2;
     }
 
     public final class IntakeConstants {
