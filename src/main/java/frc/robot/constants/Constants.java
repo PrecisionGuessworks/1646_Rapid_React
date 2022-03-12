@@ -4,6 +4,8 @@
 
 package frc.robot.constants;
 
+import edu.wpi.first.math.trajectory.TrajectoryConfig;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -16,6 +18,11 @@ public final class Constants {
     public static final class DriveConstants{
         public static final double THROTTLE_SCALER = 0.6;
         public static final double ROTATION_SCALE = 0.2;
+
+        public static final TrajectoryConfig  DRIVE_CONFIG = new TrajectoryConfig(10, 5);
+
+        public static final double MAX_SPEED = 15;
+        
     }
 
     public final class IntakeConstants {

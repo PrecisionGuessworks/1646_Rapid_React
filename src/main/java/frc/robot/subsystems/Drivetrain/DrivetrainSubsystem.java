@@ -6,6 +6,8 @@ package frc.robot.subsystems.Drivetrain;
 
 import javax.swing.plaf.synth.SynthCheckBoxMenuItemUI;
 
+import com.ctre.phoenix.motorcontrol.DemandType;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
 import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
@@ -14,6 +16,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.RobotMap;
+import frc.robot.constants.Constants.DriveConstants;
 import frc.robot.lib.PIDConfig;
 import frc.robot.lib.TalonFXFactory;
 
@@ -57,8 +60,17 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
   public void setSpeed(double leftSpeed, double rightSpeed){
-    frontLeftMotor.set(TalonFXControlMode.Velocity, leftSpeed);
-    frontRightMotor.set(TalonFXControlMode.Velocity, rightSpeed);
+    frontLeftMotor.set(TalonFXControlMode.Velocity, leftSpeed, DemandType.ArbitraryFeedForward, leftSpeed/DriveConstants.MAX_SPEED);
+    frontRightMotor.set(TalonFXControlMode.Velocity, rightSpeed, DemandType.ArbitraryFeedForward, rightSpeed/DriveConstants.MAX_SPEED);
+  }
+
+  public void setNeutralMode(NeutralMode neutralMode){
+    frontLeftMotor.setNeutralMode(neutralMode);
+    frontRightMotor.setNeutralMode(neutralMode);
+    backLeftMotor.setNeutralMode(neutralMode);
+    backRightMotor.setNeutralMode(neutralMode);
+    topLeftMotor.setNeutralMode(neutralMode);
+    topRightMotor.setNeutralMode(neutralMode);
   }
 
   @Override
