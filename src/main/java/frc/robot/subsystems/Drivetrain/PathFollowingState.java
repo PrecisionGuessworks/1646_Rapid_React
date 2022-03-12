@@ -35,9 +35,15 @@ public class PathFollowingState extends CommandBase {
     double velocity = currentState.velocityMetersPerSecond;
     double angularVelocity = currentState.curvatureRadPerMeter * velocity;
 
-    double leftSpeed = velocity - angularVelocity;
-    double rightSpeed = velocity + angularVelocity;
-    drive.setSpeed(leftSpeed, rightSpeed);
+    double acceleration = currentState.accelerationMetersPerSecondSq;
+    double angularAcceleration = currentState.curvatureRadPerMeter * acceleration;
+
+    double leftSpeed = velocity + angularVelocity;
+    double rightSpeed = velocity - angularVelocity;
+
+    double leftAccel = acceleration + angularAcceleration;
+    double rightAccel = acceleration - angularAcceleration;
+    drive.setSpeed(leftSpeed, rightSpeed, leftAccel, rightAccel);
 
 
 

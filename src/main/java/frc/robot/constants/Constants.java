@@ -22,6 +22,13 @@ public final class Constants {
         public static final TrajectoryConfig  DRIVE_CONFIG = new TrajectoryConfig(10, 5);
 
         public static final double MAX_SPEED = 15;
+        public static final double MAX_ACCEL = 15;
+
+        public static final double feetToEncoderCounts = 12 //inches per foot
+                                                        / 18.85// wheel rotations per inch
+                                                        * 10.86 //output shaft rotations per wheel rotation
+                                                        * 2048 //Encoder Counts per output shaft rotations
+                                                        / 10; //Convert 100 Millsecond to seconds
         
     }
 

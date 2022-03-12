@@ -14,6 +14,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.RobotMap;
 import frc.robot.constants.Constants.DriveConstants;
@@ -28,13 +29,15 @@ public class DrivetrainSubsystem extends SubsystemBase {
   private static DrivetrainSubsystem instance;
 
   private DrivetrainSubsystem() {
-    frontLeftMotor = TalonFXFactory.makeTalonFX(RobotMap.FRONT_LEFT_MOTOR_ID, TalonFXInvertType.CounterClockwise, new PIDConfig(0.0, 0.0, 0.0, 0.0));
+    frontLeftMotor = TalonFXFactory.makeTalonFX(RobotMap.FRONT_LEFT_MOTOR_ID, TalonFXInvertType.CounterClockwise, new PIDConfig(0.51, 0.0, 0.3, 0.0));
     topLeftMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.TOP_LEFT_MOTOR_ID, frontLeftMotor);
     backLeftMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.BACK_LEFT_MOTOR_ID, frontLeftMotor);
 
-    frontRightMotor = TalonFXFactory.makeTalonFX(RobotMap.FRONT_RIGHT_MOTOR_ID, TalonFXInvertType.Clockwise, new PIDConfig(0.0, 0.0, 0.0, 0.0));
+    frontRightMotor = TalonFXFactory.makeTalonFX(RobotMap.FRONT_RIGHT_MOTOR_ID, TalonFXInvertType.Clockwise, new PIDConfig(0.51, 0.0, 0.3, 0.0));
     topRightMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.TOP_RIGHT_MOTOR_ID, frontRightMotor);
     backRightMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.BACK_RIGHT_MOTOR_ID, frontRightMotor);
+
+    
   }
 
   public static synchronized DrivetrainSubsystem getInstance(){
@@ -59,9 +62,12 @@ public class DrivetrainSubsystem extends SubsystemBase {
     setPower(wheelSpeed.left, wheelSpeed.right);
   }
 
-  public void setSpeed(double leftSpeed, double rightSpeed){
-    frontLeftMotor.set(TalonFXControlMode.Velocity, leftSpeed, DemandType.ArbitraryFeedForward, leftSpeed/DriveConstants.MAX_SPEED);
-    frontRightMotor.set(TalonFXControlMode.Velocity, rightSpeed, DemandType.ArbitraryFeedForward, rightSpeed/DriveConstants.MAX_SPEED);
+  public void setSpeed(double leftSpeed, double rightSpeed, double leftAccel, double rightAccel){
+    frontLeftMotor.set(TalonFXControlMode.Velocity, leftSpeed * DriveConstants.feetToEncoderCounts, DemandType.ArbitraryFeedForward, leftSpeed/DriveConstants.MAX_SPEED + 0/DriveConstants.MAX_ACCEL);
+    frontRightMotor.set(TalonFXControlMode.Velocity, rightSpeed * DriveConstants.feetToEncoderCounts, DemandType.ArbitraryFeedForward, rightSpeed/DriveConstants.MAX_SPEED + 0/DriveConstants.MAX_ACCEL);
+    SmartDashboard.putNumber("Left Speed Error", leftSpeed - frontLeftMotor.getSelectedSensorVelocity()/DriveConstants.feetToEncoderCounts);
+    SmartDashboard.putNumber("Right Speed Error", rightSpeed - frontRightMotor.getSelectedSensorVelocity()/DriveConstants.feetToEncoderCounts);
+
   }
 
   public void setNeutralMode(NeutralMode neutralMode){

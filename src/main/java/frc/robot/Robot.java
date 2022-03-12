@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.constants.Constants.DriveConstants;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 
 /**
@@ -73,6 +74,7 @@ public class Robot extends TimedRobot {
   public void testInit() {
     CommandScheduler.getInstance().cancelAll();
     //Adding this so when in test mode we can move the robot.
+    DrivetrainSubsystem.getInstance().setPower(0.0, 0.0);
     DrivetrainSubsystem.getInstance().setNeutralMode(NeutralMode.Coast);
   }
 
