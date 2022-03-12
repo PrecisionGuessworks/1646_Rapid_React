@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.PS4Controller.Button;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import frc.robot.commands.Scoreball;
 import frc.robot.commands.autonomous.ScoreAndDriveBackwards;
+import frc.robot.constants.Trajectories;
 import frc.robot.constants.Constants.ArmConstants.ArmPosition;
 import frc.robot.lib.Controllers;
 import frc.robot.subsystems.Arm.ArmSubsystem;
@@ -19,6 +20,7 @@ import frc.robot.subsystems.Arm.states.IdleArmState;
 import frc.robot.subsystems.Arm.states.PositionArmState;
 import frc.robot.subsystems.Arm.states.manualArmState;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
+import frc.robot.subsystems.Drivetrain.PathFollowingState;
 import frc.robot.subsystems.Drivetrain.states.OpenLoopState;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
 import frc.robot.subsystems.Intake.states.IdleIntakeState;
@@ -95,6 +97,7 @@ public class RobotContainer {
  
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new ScoreAndDriveBackwards();
+    //return new ScoreAndDriveBackwards();
+    return new PathFollowingState(Trajectories.test);
   }
 }
