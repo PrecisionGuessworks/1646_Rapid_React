@@ -22,8 +22,8 @@ public class Trajectories {
 
 
 
-    public static List<Pose2d> Start2toBall3PointList = List.of(FieldPositions.addRotation(FieldPositions.STARTING_POINT_TOUCHING_HUB_2, new Rotation2d(3/5*Math.PI)),
-                                                        FieldPositions.pointAtIntake(FieldPositions.addRotation(FieldPositions.ALLIANCE_BALL_2, new Rotation2d(Math.PI/2 + Math.PI/10))));
+    public static List<Pose2d> Start2toBall3PointList = List.of(new Pose2d(FieldPositions.STARTING_POINT_TOUCHING_HUB_2, new Rotation2d(3/5*Math.PI)),
+                                                        FieldPositions.pointAtIntake(new Pose2d(FieldPositions.ALLIANCE_BALL_2, new Rotation2d(Math.PI/2 + Math.PI/10))));
     public static Trajectory Start2toBall3 = TrajectoryGenerator.generateTrajectory(Start2toBall3PointList, DriveConstants.DRIVE_CONFIG);
 
 }
