@@ -15,7 +15,7 @@ public class FieldPositions {
     public static final Pose2d OPPONENT_BALL_4 = new Pose2d(37.4, 20, new Rotation2d());
     public static final Pose2d OPPONENT_BALL_5 = new Pose2d(37, 6.4, new Rotation2d());
     public static final Pose2d OPPONENT_BALL_6 = new Pose2d(29.1, 1.3, new Rotation2d());
-    public static final Pose2d OPPONEN_TERMINAL_BALL = new Pose2d( 50.15, 3.84, new Rotation2d());
+    public static final Pose2d OPPONENT_TERMINAL_BALL = new Pose2d( 50.15, 3.84, new Rotation2d());t
 
     public static final Pose2d ALLIANCE_BALL_1 = new Pose2d(16.5, 6, new Rotation2d());
     public static final Pose2d ALLIANCE_BALL_2 = new Pose2d(16.9, 20.6, new Rotation2d());
