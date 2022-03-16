@@ -63,8 +63,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
   public void setSpeed(double leftSpeed, double rightSpeed, double leftAccel, double rightAccel){
-    frontLeftMotor.set(TalonFXControlMode.Velocity, leftSpeed * DriveConstants.feetToEncoderCounts, DemandType.ArbitraryFeedForward, leftSpeed/DriveConstants.MAX_SPEED + 0/DriveConstants.MAX_ACCEL);
-    frontRightMotor.set(TalonFXControlMode.Velocity, rightSpeed * DriveConstants.feetToEncoderCounts, DemandType.ArbitraryFeedForward, rightSpeed/DriveConstants.MAX_SPEED + 0/DriveConstants.MAX_ACCEL);
+    frontLeftMotor.set(TalonFXControlMode.Velocity, leftSpeed * DriveConstants.feetToEncoderCounts, DemandType.ArbitraryFeedForward, DriveConstants.DRIVE_MOTOR_FEEDFOWARD.calculate(leftSpeed, leftAccel));
+    frontRightMotor.set(TalonFXControlMode.Velocity, rightSpeed * DriveConstants.feetToEncoderCounts, DemandType.ArbitraryFeedForward, DriveConstants.DRIVE_MOTOR_FEEDFOWARD.calculate(rightSpeed, rightAccel));
     SmartDashboard.putNumber("Left Speed Error", leftSpeed - frontLeftMotor.getSelectedSensorVelocity()/DriveConstants.feetToEncoderCounts);
     SmartDashboard.putNumber("Right Speed Error", rightSpeed - frontRightMotor.getSelectedSensorVelocity()/DriveConstants.feetToEncoderCounts);
 
