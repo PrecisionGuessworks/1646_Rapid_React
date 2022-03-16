@@ -10,7 +10,7 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import frc.robot.constants.Constants.DriveConstants;
 
 public class Trajectories {
-    public static Pose2d start = new Pose2d(0, 0, new Rotation2d(Math.PI/2));
+    public static Pose2d start = new Pose2d(0, 0, new Rotation2d());
     public static Pose2d end = new Pose2d(10, 10, new Rotation2d());
     public static Pose2d end2 = new Pose2d(18, 0, new Rotation2d(Math.PI/10));
 
@@ -23,7 +23,7 @@ public class Trajectories {
 
 
     public static List<Pose2d> Start2toBall3PointList = List.of(new Pose2d(FieldPositions.STARTING_POINT_TOUCHING_HUB_2, new Rotation2d(3/5*Math.PI)),
-                                                        FieldPositions.pointAtIntake(new Pose2d(FieldPositions.ALLIANCE_BALL_2, new Rotation2d(Math.PI/2 + Math.PI/10))));
+                                                        new Pose2d(FieldPositions.ALLIANCE_BALL_2, new Rotation2d(Math.PI)));
     public static Trajectory Start2toBall3 = TrajectoryGenerator.generateTrajectory(Start2toBall3PointList, DriveConstants.DRIVE_CONFIG);
 
 }

@@ -98,9 +98,9 @@ public class RobotContainer {
  
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new ScoreAndDriveBackwards();
+    //return new ScoreAndDriveBackwards();
     //return new PathFollowingState(Trajectories.test);
     //return new testAuto();
-    //return new PathFollowingState(Trajectories.Start2toBall3);
+    return new PathFollowingState(Trajectories.Start2toBall3);
   }
 }

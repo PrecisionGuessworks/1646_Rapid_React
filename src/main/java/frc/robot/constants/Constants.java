@@ -24,6 +24,10 @@ public final class Constants {
         public static final double MAX_SPEED = 15;
         public static final double MAX_ACCEL = 15;
 
+        public static final double kS = 0.61746;
+        public static final double kV = 0.7228;
+        public static final double kA = 0.19154;
+
         public static final double feetToEncoderCounts = 12 //inches per foot
                                                         / 18.85// wheel rotations per inch
                                                         * 10.86 //output shaft rotations per wheel rotation
