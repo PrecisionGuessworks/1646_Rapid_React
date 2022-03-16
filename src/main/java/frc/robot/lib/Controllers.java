@@ -1,6 +1,7 @@
 package frc.robot.lib;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.button.Button;
 
 public class Controllers {
 
@@ -24,6 +25,10 @@ public class Controllers {
         return operatorController;
     }
 
+    public static Button getButton(Joystick controller, int buttonID){
+
+    }
+
     public static class PS4_Controller{
         public static class Axis{
             public static final int LEFT_STICK_X = 0;
@@ -34,7 +39,7 @@ public class Controllers {
             public static final int RIGHT_STICK_Y = 5;
         }
 
-        public static class Button{
+        public static class ButtonID{
             public static final int SQUARE = 3;
             public static final int X = 1;
             public static final int CIRCLE = 2;
@@ -58,7 +63,7 @@ public class Controllers {
 	        public static final int RIGHT_STICK_Y = 5;
         }
 
-        public static class Button{
+        public static class ButtonID{
             public static final int A = 1;
 	        public static final int B = 2;
 	        public static final int X = 3;

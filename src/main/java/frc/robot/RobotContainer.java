@@ -86,13 +86,13 @@ public class RobotContainer {
     Joystick op_joystick = Controllers.getOperatorController();
 
 
-    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.Left_Button_1).whileHeld(new PullInState());
-    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.Right_Button_1).whileHeld(new SpitOutState());
-    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.X).whenPressed(new PositionArmState(ArmPosition.LOW));
-    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whenPressed(new PositionArmState(ArmPosition.HIGH));
-    new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.X).whileHeld(new PullInState());
-    new JoystickButton(op_joystick, Controllers.PS4_Controller.Button.TRIANGLE).whileHeld(new SpitOutState());
-    new JoystickButton(drive_joystick, Controllers.PS4_Controller.Button.L_Joy_Button).whenPressed(new Scoreball());
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.ButtonID.Left_Button_1).whileHeld(new PullInState());
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.ButtonID.Right_Button_1).whileHeld(new SpitOutState());
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.ButtonID.X).whenPressed(new PositionArmState(ArmPosition.LOW));
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.ButtonID.TRIANGLE).whenPressed(new PositionArmState(ArmPosition.HIGH));
+    new JoystickButton(op_joystick, Controllers.PS4_Controller.ButtonID.X).whileHeld(new PullInState());
+    new JoystickButton(op_joystick, Controllers.PS4_Controller.ButtonID.TRIANGLE).whileHeld(new SpitOutState());
+    new JoystickButton(drive_joystick, Controllers.PS4_Controller.ButtonID.L_Joy_Button).whenPressed(new Scoreball());
   }
 
  
