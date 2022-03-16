@@ -4,6 +4,7 @@
 
 package frc.robot.constants;
 
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 
 /**
@@ -24,9 +25,11 @@ public final class Constants {
         public static final double MAX_SPEED = 15;
         public static final double MAX_ACCEL = 15;
 
-        public static final double kS = 0.61746;
-        public static final double kV = 0.7228;
-        public static final double kA = 0.19154;
+        // Divide by 12 to switch from voltage output to percent output
+        public static final double kS = 0.61746/12;
+        public static final double kV = 0.7228/12;
+        public static final double kA = 0.19154/12;
+        
 
         public static final double feetToEncoderCounts = 12 //inches per foot
                                                         / 18.85// wheel rotations per inch
