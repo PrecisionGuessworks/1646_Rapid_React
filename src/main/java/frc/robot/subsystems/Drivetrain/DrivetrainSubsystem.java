@@ -39,7 +39,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     topRightMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.TOP_RIGHT_MOTOR_ID, frontRightMotor);
     backRightMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.BACK_RIGHT_MOTOR_ID, frontRightMotor);
 
-    throtteLimiter = new SlewRateLimiter(0.75);
+    throtteLimiter = new SlewRateLimiter(DriveConstants.defaultSlewRate);
   }
 
   public static synchronized DrivetrainSubsystem getInstance(){

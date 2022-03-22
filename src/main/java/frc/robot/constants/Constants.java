@@ -33,6 +33,8 @@ public final class Constants {
         public static final double kA = 0.19154/12;
         public static final SimpleMotorFeedforward DRIVE_MOTOR_FEEDFOWARD = new SimpleMotorFeedforward(kS, kV, kA);
 
+        public static final double defaultSlewRate = 0.5;
+
         public static final double feetToEncoderCounts = 12 //inches per foot
                                                         / 18.85// wheel rotations per inch
                                                         * 10.86 //output shaft rotations per wheel rotation
