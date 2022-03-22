@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
 import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -25,6 +26,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
   
   private TalonFX frontRightMotor, topRightMotor, backRightMotor;
   private TalonFX frontLeftMotor, topLeftMotor, backLeftMotor; 
+  private SlewRateLimiter throtteLimiter;
 
   private static DrivetrainSubsystem instance;
 
@@ -37,7 +39,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     topRightMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.TOP_RIGHT_MOTOR_ID, frontRightMotor);
     backRightMotor = TalonFXFactory.makeFollowerTalonFX(RobotMap.BACK_RIGHT_MOTOR_ID, frontRightMotor);
 
-    
+    throtteLimiter = new SlewRateLimiter(0.75);
   }
 
   public static synchronized DrivetrainSubsystem getInstance(){
@@ -47,14 +49,18 @@ public class DrivetrainSubsystem extends SubsystemBase {
     return instance;
   }
 
+  public void curvatureDriveWithSlewRateLimiting(double throttle, double curvature){
+    double limitedThrottle = throtteLimiter.calculate(throttle);
+    curvatureDrive(limitedThrottle, curvature);
+  }
 
-  public void curvatureDrive(double throttle, double rotation){
+  public void curvatureDrive(double throttle, double curvature){
     boolean quickTurn = true;
     if (Math.abs(throttle) > 0.15){
       quickTurn = false;
     }
     //Note: Even though the variable is called wheel speed, this is actually for wheel powers
-    WheelSpeeds wheelSpeed = DifferentialDrive.curvatureDriveIK(throttle, rotation, quickTurn);
+    WheelSpeeds wheelSpeed = DifferentialDrive.curvatureDriveIK(throttle, curvature, quickTurn);
     setPower(wheelSpeed.left, wheelSpeed.right);
   }
 
