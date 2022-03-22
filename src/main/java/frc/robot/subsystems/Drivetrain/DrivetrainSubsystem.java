@@ -47,10 +47,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
     return instance;
   }
 
-  public void setPower(double leftPower, double rightPower){
-    frontLeftMotor.set(TalonFXControlMode.PercentOutput, leftPower);
-    frontRightMotor.set(TalonFXControlMode.PercentOutput, rightPower);
-  }
 
   public void curvatureDrive(double throttle, double rotation){
     boolean quickTurn = true;
@@ -60,6 +56,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
     //Note: Even though the variable is called wheel speed, this is actually for wheel powers
     WheelSpeeds wheelSpeed = DifferentialDrive.curvatureDriveIK(throttle, rotation, quickTurn);
     setPower(wheelSpeed.left, wheelSpeed.right);
+  }
+
+  public void setPower(double leftPower, double rightPower){
+    frontLeftMotor.set(TalonFXControlMode.PercentOutput, leftPower);
+    frontRightMotor.set(TalonFXControlMode.PercentOutput, rightPower);
   }
 
   public void setSpeed(double leftSpeed, double rightSpeed, double leftAccel, double rightAccel){
