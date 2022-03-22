@@ -7,10 +7,18 @@ package frc.robot.subsystems.Drivetrain.states;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain.DrivetrainSubsystem;
 
-public class DriveBackwards extends CommandBase {
+public class DriveWithPower extends CommandBase {
   DrivetrainSubsystem drive = DrivetrainSubsystem.getInstance();
-  public DriveBackwards() {
+  double throttle, curvature;
+
+  public DriveWithPower() {
+    new DriveWithPower(0.0, 0.0);
+  }
+
+  public DriveWithPower(double throttle, double curvature){
     addRequirements(drive);
+    this.throttle = throttle;
+    this.curvature = curvature;
   }
 
   @Override

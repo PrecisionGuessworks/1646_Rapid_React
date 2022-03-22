@@ -5,7 +5,7 @@
 package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.subsystems.Drivetrain.states.DriveBackwards;
+import frc.robot.subsystems.Drivetrain.states.DriveWithPower;
 import frc.robot.subsystems.Intake.states.SpitOutState;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -18,7 +18,7 @@ public class ScoreAndDriveBackwards extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new SpitOutState().withTimeout(0.5),
-      new DriveBackwards().withTimeout(1.5)
+      new DriveWithPower(-0.35, 0.0).withTimeout(1.5)
 
     );
   }
