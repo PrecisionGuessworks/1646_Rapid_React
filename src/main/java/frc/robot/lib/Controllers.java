@@ -25,9 +25,6 @@ public class Controllers {
         return operatorController;
     }
 
-    public static Button getButton(Joystick controller, int buttonID){
-
-    }
 
     public static class PS4_Controller{
         public static class Axis{
