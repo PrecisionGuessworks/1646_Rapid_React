@@ -54,7 +54,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   public void curvatureDrive(double throttle, double rotation){
     boolean quickTurn = true;
-    if (throttle > 0.15){
+    if (Math.abs(throttle) > 0.15){
       quickTurn = false;
     }
     //Note: Even though the variable is called wheel speed, this is actually for wheel powers
