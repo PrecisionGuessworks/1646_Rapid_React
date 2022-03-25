@@ -18,6 +18,7 @@ import frc.robot.commands.autonomous.ScoreAndDriveBackwards;
 import frc.robot.commands.autonomous.SnipeOtherBall;
 import frc.robot.commands.autonomous.TwoBall;
 import frc.robot.commands.autonomous.testAuto;
+import frc.robot.commands.autonomous.testRotate;
 import frc.robot.constants.Trajectories;
 import frc.robot.constants.Constants.ArmConstants.ArmPosition;
 import frc.robot.lib.Controllers;
@@ -56,6 +57,7 @@ public class RobotContainer {
   private final Command snipeBall = new SnipeOtherBall();
   private final Command driveBack = new DriveBackwards();
   private final Command twoBalls = new TwoBall();
+  private final Command rotatetest = new testRotate();
 
   private SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -114,6 +116,7 @@ public class RobotContainer {
     m_chooser.addOption("Snipe Opponent Ball", snipeBall);
     m_chooser.addOption("Drive Backwards", driveBack);
     m_chooser.addOption("Two Balls", twoBalls);
+    m_chooser.addOption("Rotation Test", rotatetest);
     m_chooser.addOption ("Nothing", new WaitCommand(14.0));
 
     SmartDashboard.putData(m_chooser);
