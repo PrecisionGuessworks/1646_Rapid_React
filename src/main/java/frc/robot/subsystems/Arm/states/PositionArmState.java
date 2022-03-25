@@ -26,7 +26,7 @@ public class PositionArmState extends CommandBase {
     if (position == ArmPosition.HIGH){
       arm.setPower(0.4); 
     } else if (position == ArmPosition.LOW){
-      arm.setPower(-0.25);
+      arm.setPower(-0.35);
     }
     
 

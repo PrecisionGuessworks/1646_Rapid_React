@@ -18,7 +18,7 @@ import edu.wpi.first.math.trajectory.TrajectoryConfig;
 public final class Constants {
     public static final class DriveConstants{
         public static final double THROTTLE_SCALER = 0.6;
-        public static final double ROTATION_SCALE = 0.2;
+        public static final double ROTATION_SCALE = 0.5;
         
         //The drive configuration is kept underneither the free speed of the robot
         //We can try adjusting these values higher if we need to be faster

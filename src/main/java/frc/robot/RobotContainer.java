@@ -115,7 +115,7 @@ public class RobotContainer {
     m_chooser.setDefaultOption("Score And Drive Backwards", driveBackandScore);
     m_chooser.addOption("Snipe Opponent Ball", snipeBall);
     m_chooser.addOption("Drive Backwards", driveBack);
-    m_chooser.addOption("Two Balls", twoBalls);
+    //m_chooser.addOption("Two Balls", twoBalls);
     m_chooser.addOption("Rotation Test", rotatetest);
     m_chooser.addOption ("Nothing", new WaitCommand(14.0));
 

@@ -18,7 +18,7 @@ public class SnipeOtherBall extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new PositionArmState(ArmPosition.LOW).withTimeout(0.5),
+      new PositionArmState(ArmPosition.LOW).withTimeout(1),
       new SpitOutState().withTimeout(2)
     );
   }

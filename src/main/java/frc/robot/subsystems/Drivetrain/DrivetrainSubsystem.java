@@ -59,10 +59,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
     //We do the multiplication because we need different turning constants for 
     //quickturn verse not, but didn't have time to restructure the entire code to accont
     //for it.
-    curvature = curvature * 0.6;
+    //curvature = curvature * 0.6;
     if (Math.abs(throttle) > 0.15){
       quickTurn = false;
-      curvature = curvature / 0.6;
+      //curvature = curvature / 0.6;
     }
     //Note: Even though the variable is called wheel speed, this is actually for wheel powers
     WheelSpeeds wheelSpeed = DifferentialDrive.curvatureDriveIK(throttle, curvature, quickTurn);
