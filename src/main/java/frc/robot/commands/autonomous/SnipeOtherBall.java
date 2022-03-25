@@ -19,7 +19,7 @@ public class SnipeOtherBall extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new PositionArmState(ArmPosition.LOW).withTimeout(0.5),
-      new SpitOutState(),withTimeout(2)
+      new SpitOutState().withTimeout(2)
     );
   }
 }

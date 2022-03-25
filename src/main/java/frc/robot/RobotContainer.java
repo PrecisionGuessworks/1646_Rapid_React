@@ -10,8 +10,13 @@ import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.Scoreball;
+import frc.robot.commands.autonomous.DriveBackwards;
 import frc.robot.commands.autonomous.ScoreAndDriveBackwards;
+import frc.robot.commands.autonomous.SnipeOtherBall;
+import frc.robot.commands.autonomous.TwoBall;
 import frc.robot.commands.autonomous.testAuto;
 import frc.robot.constants.Trajectories;
 import frc.robot.constants.Constants.ArmConstants.ArmPosition;
@@ -30,6 +35,7 @@ import frc.robot.subsystems.Intake.states.SpitOutState;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
@@ -46,12 +52,20 @@ public class RobotContainer {
   ArmSubsystem arm;
   PowerDistribution powerDistrubutionBoard;
 
+  private final Command driveBackandScore =  new ScoreAndDriveBackwards();
+  private final Command snipeBall = new SnipeOtherBall();
+  private final Command driveBack = new DriveBackwards();
+  private final Command twoBalls = new TwoBall();
+
+  private SendableChooser<Command> m_chooser = new SendableChooser<>();
+
 
   public RobotContainer() {
     initilizeSubsystems();
     initilizePowerDistrubutionBoard();
     setAllDefaultCommands();
     configureButtonBindings();
+    configureAutoChooser();
   }
 
   public void initilizeSubsystems(){
@@ -92,15 +106,24 @@ public class RobotContainer {
     new JoystickButton(drive_joystick, Controllers.PS4_Controller.ButtonID.TRIANGLE).whenPressed(new PositionArmState(ArmPosition.HIGH));
     new JoystickButton(op_joystick, Controllers.PS4_Controller.ButtonID.X).whileHeld(new PullInState());
     new JoystickButton(op_joystick, Controllers.PS4_Controller.ButtonID.TRIANGLE).whileHeld(new SpitOutState());
-    new JoystickButton(drive_joystick, Controllers.PS4_Controller.ButtonID.L_Joy_Button).whenPressed(new Scoreball());
+    
   }
 
- 
+  public void configureAutoChooser() {
+    m_chooser.setDefaultOption("Score And Drive Backwards", driveBackandScore);
+    m_chooser.addOption("Snipe Opponent Ball", snipeBall);
+    m_chooser.addOption("Drive Backwards", driveBack);
+    m_chooser.addOption("Two Balls", twoBalls);
+    m_chooser.addOption ("Nothing", new WaitCommand(14.0));
+
+    SmartDashboard.putData(m_chooser);
+  }
+
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    //return new ScoreAndDriveBackwards();
+    return m_chooser.getSelected();
     //return new PathFollowingState(Trajectories.test);
     //return new testAuto();
-    return new PathFollowingState(Trajectories.Start2toBall3);
+    //return new PathFollowingState(Trajectories.Start2toBall3);
   }
 }

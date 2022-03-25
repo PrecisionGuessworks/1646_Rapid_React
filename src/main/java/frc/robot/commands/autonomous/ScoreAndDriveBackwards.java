@@ -17,7 +17,7 @@ public class ScoreAndDriveBackwards extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new SpitOutState().withTimeout(0.5),
+      new SpitOutState().withTimeout(5.0),
       new DriveWithPower(-0.35, 0.0).withTimeout(1.5)
 
     );
